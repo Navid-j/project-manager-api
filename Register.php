@@ -22,7 +22,6 @@ if (isset($_GET['first_name'], $_GET['last_name'], $_GET['personnel_code'],
 
 } else {
     echo "Error: Check Imported Data -> 'first_name, last_name, personnel_code, phone_number, level, user, pass'";
-    echo " < br> Error: " . $my_query . mysqli_error($Connect);
     $data_response['success'] = 0;
 }
 
@@ -35,4 +34,3 @@ if ($Connect->query($my_query) == true) {
 }
 echo json_encode($data_response, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
 mysqli_close($Connect);
-?>
