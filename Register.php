@@ -7,21 +7,20 @@ $Connect = mysqli_connect($SERVER, $USERNAME, $PASSWORD, $DATABASE_NAME);
 mysqli_set_charset($Connect, "utf8");
 
 if (isset($_GET['first_name'], $_GET['last_name'], $_GET['personnel_code'],
-    $_GET['phone_number'], $_GET['level'], $_GET['user'], $_GET['pass'])) {
+    $_GET['phone_number'], $_GET['level'], $_GET['pass'])) {
 
     $firstName = $_GET['first_name'];
     $lastName = $_GET['last_name'];
     $persCode = $_GET['personnel_code'];
     $phoneNumber = $_GET['phone_number'];
     $level = $_GET['level'];
-    $userName = $_GET['user'];
     $password = $_GET['pass'];
 
-    $my_query = "INSERT INTO " . $TABLE_NAME . " (firstName, lastName, personnelCode, phoneNumber, level, username, password) 
-            VALUES('$firstName', '$lastName', '$persCode', '$phoneNumber', '$level', '$userName', '$password')";
+    $my_query = "INSERT INTO " . $TABLE_NAME . " (firstName, lastName, personnelCode, phoneNumber, level, password) 
+            VALUES('$firstName', '$lastName', '$persCode', '$phoneNumber', '$level', '$password')";
 
 } else {
-    echo "Error: Check Imported Data -> 'first_name, last_name, personnel_code, phone_number, level, user, pass'";
+    echo "Error: Check Imported Data -> 'first_name, last_name, personnel_code, phone_number, level, pass'";
     $data_response['success'] = 0;
 }
 
