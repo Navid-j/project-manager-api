@@ -6,11 +6,17 @@ $TABLE_NAME_USER = "users";
 
 $Connect = mysqli_connect($SERVER, $USERNAME, $PASSWORD, $DATABASE_NAME);
 mysqli_set_charset($Connect, "utf8"); // UTF-8 :) After Several Hours
-$my_query = "SELECT * FROM " . $TABLE_NAME;
 ini_set('display_errors', 1);
 
+if (isset($_GET['pers_code'])){
+    $pCode = $_GET['pers_code'];
+    $my_query = "SELECT * FROM " . $TABLE_NAME . " WHERE producerId= '" . $pCode . "'";
+}else {
+    $my_query = "SELECT * FROM " . $TABLE_NAME;
+}
+    
 $result = @mysqli_query($Connect, $my_query);
-if ($result) {
+if ($result->fetch_assoc() > 0) {
     $data_response['projects'] = array();
     $data_response['success'] = 1;
 
@@ -28,7 +34,6 @@ if ($result) {
         array_push($data_response['projects'], $project);
 
     }
-
 
 } else {
     $data_response['success'] = 0;

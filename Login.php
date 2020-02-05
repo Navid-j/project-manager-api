@@ -16,7 +16,7 @@ if (isset($_GET['personnelCode'], $_GET['pass'])) {
         $data_response['success'] = 0;
         $data_response['message'] = "can not find this user";
     } else {
-        $query2 = "SELECT personnelCode, password FROM " . $TABLE_NAME . " WHERE password= '" . $password . "'"
+        $query2 = "SELECT personnelCode, level, password FROM " . $TABLE_NAME . " WHERE password= '" . $password . "'"
             . " AND personnelCode = '" . $pCode . "'";
         $result2 = mysqli_query($Connect,$query2);
 
